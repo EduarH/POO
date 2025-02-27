@@ -1,0 +1,5 @@
+﻿  lab62.cpp
+c:\users\predator 17\desktop\facultate\poo\project4\project4\lab62.cpp(180): warning C4101: 'Tip_derivat': unreferenced local variable
+c:\users\predator 17\desktop\facultate\poo\project4\project4\lab62.cpp(227): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\predator 17\desktop\facultate\poo\project4\project4\lab62.cpp(228): warning C4101: 'nr': unreferenced local variable
+  Project4.vcxproj -> C:\Users\Predator 17\Desktop\Facultate\POO\Project4\Debug\Project4.exe

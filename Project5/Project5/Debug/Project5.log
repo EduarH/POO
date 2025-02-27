@@ -1,0 +1,5 @@
+﻿  p2e.cpp
+c:\users\predator 17\desktop\facultate\poo\project5\project5\p2e.cpp(231): warning C4101: 'Tip_derivat': unreferenced local variable
+c:\users\predator 17\desktop\facultate\poo\project5\project5\p2e.cpp(268): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\predator 17\desktop\facultate\poo\project5\project5\p2e.cpp(303): warning C4551: function call missing argument list
+  Project5.vcxproj -> C:\Users\Predator 17\Desktop\Facultate\POO\Project5\Debug\Project5.exe
