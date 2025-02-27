@@ -1,0 +1,440 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <conio.h>
+#include <string>
+#include <list>
+#include <iterator>
+#include <fstream>
+
+using namespace std;
+
+class Comanda //clasa comanda
+{
+private:
+	string nume;
+	int nr_c;
+	double plata;
+	int tip_derivat;
+public:
+
+	Comanda(int tip_derivat)
+	{
+		this->tip_derivat = tip_derivat;
+	}
+
+	Comanda(string nume, int nr_c, double plata, int tip_derivat) //constructor
+	{
+		this->nume = nume;
+		this->nr_c = nr_c;
+		this->plata = plata;
+		this->tip_derivat = tip_derivat;
+	}
+
+	virtual void afisare_comanda() //metoda virtuala de afisare
+	{
+		cout << "---------------" << endl;
+		cout << "Nume: " << nume << endl;
+		cout << "Numar comanda: " << nr_c << endl;
+		cout << "Plata: " << plata << " lei\n";
+	}
+
+	string getNume()
+	{
+		return nume;
+	}
+
+	int getNr_c()
+	{
+		return nr_c;
+	}
+
+	double getPlata()
+	{
+		return plata;
+	}
+
+	friend istream& operator >>(istream&, Comanda*&);
+	friend ostream& operator <<(ostream&, Comanda*);
+	friend void afisare(list<Comanda*>);
+	friend void cautare(list<Comanda*>);
+	friend void afisare_tip(list<Comanda*>);
+	friend void scrie_fisier(list<Comanda*>);
+};
+
+class Restaurant : public Comanda
+{
+private:
+	int nr_m;
+public:
+	Restaurant(string nume, int nr_c, double plata, int nr_m, int tip_derivat) : Comanda(nume, nr_c, plata, tip_derivat) //constructor
+	{
+		this->nr_m = nr_m;
+	}
+
+	void afisare_comanda()
+	{
+		Comanda::afisare_comanda(); // apelam functia din clasa Comanda
+		cout << "Numarul mesei: " << nr_m << endl;
+	}
+
+	int getNr_m()
+	{
+		return nr_m;
+	}
+};
+
+class Livrare : public Comanda
+{
+public:
+
+	Livrare(string nume, int nr_c, double plata, int tip_derivat) : Comanda(nume, nr_c, plata, tip_derivat) {}
+
+	void afisare_comanda()
+	{
+		Comanda::afisare_comanda(); // apelam functia din clasa Comanda
+	}
+};
+
+class MyException //clasa pentru exceptie
+{
+public:
+	string str_what;
+	int what;
+	MyException()
+	{
+		str_what = "";
+		what = 0;
+	}
+	MyException(string s, int e)
+	{
+		str_what = s;
+		what = e;
+	}
+};
+
+istream& operator >> (istream& in, Comanda*& a)// functia de supraincarcare a operatorului de citire
+{
+	string nume;
+	int nr_c;
+	double plata;
+	int tip_derivat;
+	int nr_m;
+
+	cout << endl << "Introduceti datele despre comanda: " << endl;
+
+	if (a->tip_derivat == 0) // daca s-a ales adaugarea unui comenzi la restaurant
+	{
+		cout << "Introduceti nume meniu: ";
+		in >> nume;
+		try
+		{
+			while ((cout << "Introduceti numar comanda: ") && !(in >> nr_c))
+			{
+				cout << "Nu este cifra!\n";
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			}
+			if (nr_c < 0)
+			{
+				throw MyException("Numarul comenzii nu este pozitiv", nr_c);
+			}
+		}
+		catch (MyException e)
+		{ // Prinde eroarea
+			do {
+				cout << "Introduceti numarul comenzii (valoare pozitiva): ";
+				while ((cout << "Dati numarul comenzii: ") && !(in >> nr_c))
+				{
+					cout << "nu este cifra!\n";
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+				}
+			} while (nr_c < 0);
+		}
+			cout << "Introduceti plata: ";
+			in >> plata;
+			cout << "Introduceti numarul mese: ";
+			in >> nr_m;
+			Restaurant* r = new Restaurant(nume, nr_c, plata, nr_m, 0); //apelare constructor cu info citite
+			a = r; //cast pentru clasa de baza
+
+	}
+	else if (a->tip_derivat == 1) //daca s-a ales adaugarea unei mese consumate
+	{
+		cout << "Introduceti nume meniu: ";
+		in >> nume;
+		cout << "Introduceti numar comanda: ";
+		in >> nr_c;
+		cout << "Introduceti plata: ";
+		in >> plata;
+		Livrare* l = new Livrare(nume, nr_c, plata, 1);//apelare constructor cu info citite
+		a = l;//cast pentru clasa de baza
+	}
+	return in;
+}
+
+ostream& operator << (ostream& out, Comanda* obj) // functia de supraincarcare a operatorului de scriere
+{
+	// Afisam datele despre un articol
+	obj->afisare_comanda();
+	return out;
+}
+// Introducere elemente in lista eterogena
+void introducere(list<Comanda*>& lista, int tip_derivat)
+{
+	Comanda* pr = new Comanda(tip_derivat);
+	cin >> pr; // supraincarcarea citirii
+	lista.push_back(pr);//se adauga nodul in fata
+}
+
+void afisare(list<Comanda*> lista) //afisarea listei
+{
+	list <Comanda*> ::iterator i;
+	for (i = lista.begin(); i != lista.end(); i++)
+	{
+		Comanda* c = (*i);
+		cout << c;
+		char ch = _getch(); // afisare pas cu pas
+	}
+}
+
+void afisare_tip(list<Comanda*> lista) //afisarea comenzilor dupa tip
+{
+	int tip;
+	cout << "Pentru afisarea comenzilor de tip pachet tastati 1\n";
+	cout << "Pentru afisarea comenzilor de tip restaurant tastati 2\n";
+	cin >> tip;
+	list <Comanda*> ::iterator i;
+	for (i = lista.begin(); i != lista.end(); i++)
+	{
+		Comanda* c = (*i);
+		if (c->tip_derivat == tip)
+			cout << c;
+		char ch = _getch(); // afisare pas cu pas
+	}
+}
+
+void cautare(list<Comanda*> lista)
+{
+	int nr_c;
+	cout << "Introduceti numarul comenzii: ";
+	cin >> nr_c;
+
+	list <Comanda*> ::iterator i;
+	for (i = lista.begin(); i != lista.end(); i++)
+	{
+		Comanda* c = (*i);
+		if (c->nr_c = nr_c)
+		{
+			cout << c;
+		}
+	}
+
+	char ch = _getch();
+}
+
+void scrie_fisier(list<Comanda*> lista)
+{
+	ofstream fis;
+	fis.open("comenzi.txt");
+	Restaurant *r;
+	Livrare *l;
+	list <Comanda*> ::iterator i;
+	for (i = lista.begin(); i != lista.end(); i++)
+	{
+		Comanda* c = (*i);
+		if (c->tip_derivat == 0)
+		{
+			r = (Restaurant*)c;
+			fis << r->getNume() << " " << r->getNr_c() << " " << r->getPlata() << " " << r->tip_derivat << " " << r->getNr_m() << endl;
+		}
+		if (c->tip_derivat == 1)
+		{
+			l = (Livrare*)c;
+			fis << l->getNume() << " " << l->getNr_c() << " " << l->getPlata() << " " << l->tip_derivat << endl;
+		}
+	}
+	fis.close();
+}
+
+void citire_fisier(list<Comanda*>& lista)
+{
+	ifstream f("comenzi.txt");
+
+	string nume;
+	int nr_c;
+	double plata;
+	int tip_derivat;
+	int nr_m;
+
+	Restaurant* r = NULL;
+	Livrare* l = NULL;
+
+	while (f >> nume >> nr_c >> plata >> tip_derivat)
+	{
+		//Comanda* c = new Comanda(nume, nr_c, plata, tip_derivat);
+
+		if (tip_derivat == 0)
+		{
+			f >> nr_m;
+			r = new Restaurant(nume, nr_c, plata, nr_m, tip_derivat);
+			lista.push_back(r);
+		}
+		else
+		{
+			l = new Livrare(nume, nr_c, plata, tip_derivat);
+			lista.push_back(l);
+		}
+	}
+	f.close();
+}
+
+void main() //programul principal
+{
+	int opt;
+	int t;
+	// Lista eterogena cu comenzi pentru pachet si restaurant
+	list<Comanda*> c;
+	do
+	{
+		system("CLS");
+		cout << "1.Citirea comenzilor din fisier.\n";
+		cout << "2.Adaugare unei comenzi in spatele listei.\n";
+		cout << "3.Cautarea unei comenzi dupa numarul comenzii.\n";
+		cout << "4.Afisarea numarului total de comenzi de un anumit tip (pachet/resturant).\n";
+		cout << "5.Afisarea intregii liste.\n";
+		cout << "6.Scrierea in fisier.\n";
+		cout << "0.Iesire.\n";
+		cout << "Dati optiunea dvs: ";
+		cin >> opt;
+		//apelare functii in functie de optiunea aleasa
+		switch (opt)
+		{
+		case 1: citire_fisier(c);
+			break;
+		case 2: 
+			cout << "Doriti la pachet? (1 - Da / 0 - Nu): ";
+			cin >> t;
+			introducere(c, t);
+			break;
+		case 3: cautare(c);
+			break;
+		case 4: afisare_tip(c);
+			break;
+		case 5: afisare(c);
+			break;
+		case 6: scrie_fisier(c);
+			break;
+		case 0: break;
+		default:cout << "Comanda gresita!";
+		}
+	} while (opt != 0);
+}

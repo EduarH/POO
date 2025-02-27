@@ -15,8 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hainaru_eduard.cpp">
+    <ClCompile Include="Problemacpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="fisier.txt" />
   </ItemGroup>
 </Project>

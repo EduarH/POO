@@ -1,11 +1,42 @@
-﻿  prob8.cpp
-c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(22): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(23): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
-c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(32): error C3861: 'gets': identifier not found
-c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(35): error C3861: 'gets': identifier not found
-c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(58): error C2664: 'carti::carti(carti &&)': cannot convert argument 1 from 'const char [2]' to 'char *'
-  c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(58): note: Conversion from string literal loses const qualifier (see /Zc:strictStrings)
-c:\users\predator 17\desktop\facultate\poo\project1\project1\prob8.cpp(75): error C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\conio.h(453): note: see declaration of 'getch'
+﻿  hainaru_eduard.cpp
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(7): error C2059: syntax error: ')'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(7): error C2143: syntax error: missing ';' before '{'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(7): error C2447: '{': missing function header (old-style formal list?)
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(36): error C2065: 'ifstream': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(36): error C2146: syntax error: missing ';' before identifier 'f'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(36): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(37): error C2065: 'string': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(37): error C2146: syntax error: missing ';' before identifier 'nume'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(37): error C2065: 'nume': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(40): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(41): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(43): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(43): error C2065: 'nume': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(44): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(45): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(46): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(47): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(49): error C2065: 'nume': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(49): error C2027: use of undefined type 'student'
+  c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(7): note: see declaration of 'student'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(51): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(54): error C2065: 'f': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(57): error C2143: syntax error: missing ';' before '&'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(57): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(57): error C2065: 'in': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(57): error C2065: 'p': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(57): error C2275: 'student': illegal use of this type as an expression
+  c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(7): note: see declaration of 'student'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(57): error C2473: 'operator >>': looks like a function definition, but there is no parameter list.
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(58): error C2448: '>>': function-style initializer appears to be a function definition
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(72): error C2065: 'list': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(72): error C2988: unrecognizable template declaration/definition
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(72): error C2059: syntax error: '>'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(72): error C2143: syntax error: missing ';' before '{'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(72): error C2447: '{': missing function header (old-style formal list?)
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(80): error C2065: 'list': undeclared identifier
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(80): error C2988: unrecognizable template declaration/definition
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(80): error C2059: syntax error: '>'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(81): error C2143: syntax error: missing ';' before '{'
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(81): error C2447: '{': missing function header (old-style formal list?)
+c:\users\predator 17\desktop\test poo\project1\project1\hainaru_eduard.cpp(119): fatal error C1004: unexpected end-of-file found
